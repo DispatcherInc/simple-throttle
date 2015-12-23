@@ -7,12 +7,10 @@
 var FunctionThrottleManager = function (throttleLimit) {
     var timer;
 
-    this.run = function (args, alternateThrottleLimit) {
+    this.run = function (fn, alternateThrottleLimit) {
         clearTimeout(timer);
 
-        timer = setTimeout(function () {
-            args.fn.apply(args.scope, args.args);
-        }, alternateThrottleLimit || throttleLimit);
+        timer = setTimeout(fn, alternateThrottleLimit || throttleLimit);
     };
 };
 
